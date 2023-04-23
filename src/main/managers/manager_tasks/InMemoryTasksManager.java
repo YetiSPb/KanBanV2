@@ -15,7 +15,7 @@ public class InMemoryTasksManager implements TaskManager {
     protected final Map<Integer, Subtask> subtasks = new HashMap<>();
     protected final Map<Integer, Epic> epics = new HashMap<>();
 
-    protected final HistoryManager historyManager =Managers.getDefaultHistory();
+    protected final HistoryManager historyManager = Managers.getDefaultHistory();
 
     //get---------------------------------------------------------------------------------------------------------------
     private int generateId() {
@@ -62,7 +62,7 @@ public class InMemoryTasksManager implements TaskManager {
         return subtasksSample;
     }
 
-    public List<Task> getHistory(){
+    public List<Task> getHistory() {
         return historyManager.getHistory();
     }
 
@@ -108,6 +108,7 @@ public class InMemoryTasksManager implements TaskManager {
     @Override
     public void deleteTask(int id) {
         if (tasks.containsKey(id)) {
+            historyManager.remove(id);
             tasks.remove(id);
         } else {
             System.out.println("Задача не найдена");
@@ -118,8 +119,11 @@ public class InMemoryTasksManager implements TaskManager {
     public void deleteEpic(int id) {
         Epic epic = epics.get(id);
         if (epic != null) {
-            epic.getSubtasksId().forEach(subtasks::remove);
-            epics.remove(id);
+            for (int subtaskId : epic.getSubtasksId()) {
+                deleteSubtask(subtaskId);//Удаляем подзадачу
+            }
+            historyManager.remove(id);//Удаляем из истории
+            epics.remove(id);//Удаляем эпик
         } else System.out.println("Эпик не найден");
     }
 
@@ -127,8 +131,9 @@ public class InMemoryTasksManager implements TaskManager {
     public void deleteSubtask(int id) {
         Subtask subtask = subtasks.get(id);
         if (subtask != null) {
-            epics.get(subtask.getEpicID()).deleteSubtaskId(subtask.getId());
-            subtasks.remove(id);
+            historyManager.remove(id);//Удаляем из истории
+            epics.get(subtask.getEpicID()).deleteSubtaskId(subtask.getId());//Удаляем из эпика
+            subtasks.remove(id);//Удаляем из менеджера
         } else {
             System.out.println("Подзадача не найдена");
         }
