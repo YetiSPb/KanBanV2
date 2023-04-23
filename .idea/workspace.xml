@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c85efbfe-3e20-4d36-9188-a24987e207ce" name="Changes" comment="В Main добавлен код для теста всех типов задач и истории.&#10;В InMemoryTasksManager historyManager создаётся от Managers">
+    <list default="true" id="c85efbfe-3e20-4d36-9188-a24987e207ce" name="Changes" comment="Добавлено удаление задачи из истории при удалении из менеджера.">
+      <change afterPath="$PROJECT_DIR$/src/main/managers/manager_history/Node/Node.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/managers/manager_history/HistoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/managers/manager_history/HistoryManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/managers/manager_history/InMemoryHistoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/managers/manager_history/InMemoryHistoryManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/managers/manager_tasks/InMemoryTasksManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/managers/manager_tasks/InMemoryTasksManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="23233" />
+    <option name="totalTimeSeconds" value="33267" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
@@ -27,7 +27,15 @@
       </list>
     </option>
   </component>
+  <component name="FindBugs-IDEA-Workspace">
+    <toolWindowEditorPreview>false</toolWindowEditorPreview>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2OI0aOmZGfRy9B9E4HZDMmYzFHG" />
@@ -36,16 +44,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/YandexDisk/Poligon/Java/KanBanV2/src/main&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "CustomLinkedList",
+    "last_opened_file_path": "D:/YandexDisk/Poligon/Java/KanBanV2/src/main",
+    "settings.editor.selected.configurable": "editor.preferences.completion"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\YandexDisk\Poligon\Java\KanBanV2\src\main" />
@@ -94,25 +102,33 @@
       <option name="project" value="LOCAL" />
       <updated>1682261329970</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Добавлено удаление задачи из истории при удалении из менеджера.">
+      <created>1682262660282</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1682262660282</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Создание трёх объектов и истории их просмотров." />
     <MESSAGE value="1" />
     <MESSAGE value="В Main добавлен код для теста всех типов задач и истории." />
     <MESSAGE value="В Main добавлен код для теста всех типов задач и истории.&#10;В InMemoryTasksManager historyManager создаётся от Managers" />
-    <option name="LAST_COMMIT_MESSAGE" value="В Main добавлен код для теста всех типов задач и истории.&#10;В InMemoryTasksManager historyManager создаётся от Managers" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/Main.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Добавлено удаление задачи из истории при удалении из менеджера." />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлено удаление задачи из истории при удалении из менеджера." />
   </component>
 </project>

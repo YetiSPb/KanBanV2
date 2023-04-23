@@ -44,11 +44,11 @@ public class Main {
         manager.addSubtask(subtask21);
         manager.addSubtask(subtask22);
 
-
         manager.getEpic(epic2.getId());
         manager.getTask(task1.getId());
         manager.getSubtask(subtask12.getId());
         manager.getSubtask(subtask22.getId());
+        manager.getTask(task1.getId());
 
         System.out.println(manager.getHistory());
 
