@@ -2,7 +2,6 @@ package main.managers.manager_tasks;
 
 import main.managers.Managers;
 import main.managers.manager_history.HistoryManager;
-import main.managers.manager_history.InMemoryHistoryManager;
 import main.tasks.Epic;
 import main.tasks.Subtask;
 import main.tasks.Task;
@@ -16,7 +15,7 @@ public class InMemoryTasksManager implements TaskManager {
     protected final Map<Integer, Subtask> subtasks = new HashMap<>();
     protected final Map<Integer, Epic> epics = new HashMap<>();
 
-    protected final HistoryManager historyManager =new InMemoryHistoryManager();
+    protected final HistoryManager historyManager =Managers.getDefaultHistory();
 
     //get---------------------------------------------------------------------------------------------------------------
     private int generateId() {
@@ -59,9 +58,7 @@ public class InMemoryTasksManager implements TaskManager {
     @Override
     public List<Subtask> getAllSubtasksByEpic(int id) {
         List<Subtask> subtasksSample = new ArrayList<>();
-        epics.get(id).getSubtasksId().forEach(subtaskId -> {
-            subtasksSample.add(subtasks.get(subtaskId));
-        });
+        epics.get(id).getSubtasksId().forEach(subtaskId -> subtasksSample.add(subtasks.get(subtaskId)));
         return subtasksSample;
     }
 
@@ -121,13 +118,9 @@ public class InMemoryTasksManager implements TaskManager {
     public void deleteEpic(int id) {
         Epic epic = epics.get(id);
         if (epic != null) {
-            epic.getSubtasksId().forEach(subtaskId -> {
-                subtasks.remove(subtaskId);
-            });
+            epic.getSubtasksId().forEach(subtasks::remove);
             epics.remove(id);
-        } else {
-            System.out.println("Эпик не найден");
-        }
+        } else System.out.println("Эпик не найден");
     }
 
     @Override

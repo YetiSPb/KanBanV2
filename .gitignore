@@ -3,6 +3,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 target
+.gitignore
 
 
 ### IntelliJ IDEA ###
@@ -10,6 +11,8 @@ target
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+.idea/
+.idea
 *.iws
 *.iml
 *.ipr
