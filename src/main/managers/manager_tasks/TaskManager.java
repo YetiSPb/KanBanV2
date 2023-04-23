@@ -1,4 +1,4 @@
-package main.manager;
+package main.managers.manager_tasks;
 
 import main.tasks.Epic;
 import main.tasks.Subtask;

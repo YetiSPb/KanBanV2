@@ -1,5 +1,8 @@
-package main.manager;
+package main.managers.manager_tasks;
 
+import main.managers.Managers;
+import main.managers.manager_history.HistoryManager;
+import main.managers.manager_history.InMemoryHistoryManager;
 import main.tasks.Epic;
 import main.tasks.Subtask;
 import main.tasks.Task;
@@ -9,40 +12,32 @@ import java.util.*;
 public class InMemoryTasksManager implements TaskManager {
     protected int id = 0;
 
-    protected Map<Integer, Task> tasks = new HashMap<>();
-    protected Map<Integer, Subtask> subtasks = new HashMap<>();
-    protected Map<Integer, Epic> epics = new HashMap<>();
+    protected final Map<Integer, Task> tasks = new HashMap<>();
+    protected final Map<Integer, Subtask> subtasks = new HashMap<>();
+    protected final Map<Integer, Epic> epics = new HashMap<>();
 
-    protected ArrayList<Task> historyView = new ArrayList<>(10);
+    protected final HistoryManager historyManager =new InMemoryHistoryManager();
 
     //get---------------------------------------------------------------------------------------------------------------
     private int generateId() {
         return ++id;
     }
 
-
-    private void addInHistoryView(Task task) {
-        if (historyView.size() == 10) {
-            historyView.remove(0);
-        }
-        historyView.add(task);
-    }
-
     @Override
     public Task getTask(int id) {
-        addInHistoryView(tasks.get(id));
+        historyManager.add(tasks.get(id));
         return tasks.get(id);
     }
 
     @Override
     public Epic getEpic(int id) {
-        addInHistoryView(epics.get(id));
+        historyManager.add(epics.get(id));
         return epics.get(id);
     }
 
     @Override
     public Subtask getSubtask(int id) {
-        addInHistoryView(subtasks.get(id));
+        historyManager.add(subtasks.get(id));
         return subtasks.get(id);
     }
 
@@ -70,9 +65,8 @@ public class InMemoryTasksManager implements TaskManager {
         return subtasksSample;
     }
 
-    @Override
-    public List<Task> getHistory() {
-        return historyView;
+    public List<Task> getHistory(){
+        return historyManager.getHistory();
     }
 
     //add-----------------------------------------------------------------------------------------------------------
