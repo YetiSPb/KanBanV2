@@ -11,11 +11,11 @@ import java.util.*;
 public class InMemoryTasksManager implements TaskManager {
     protected int id = 0;
 
-    protected final Map<Integer, Task> tasks = new HashMap<>();
-    protected final Map<Integer, Subtask> subtasks = new HashMap<>();
-    protected final Map<Integer, Epic> epics = new HashMap<>();
+    private final Map<Integer, Task> tasks = new HashMap<>();
+    private final Map<Integer, Subtask> subtasks = new HashMap<>();
+    private final Map<Integer, Epic> epics = new HashMap<>();
 
-    protected final HistoryManager historyManager = Managers.getDefaultHistory();
+    private final HistoryManager historyManager = Managers.getDefaultHistory();
 
     //get---------------------------------------------------------------------------------------------------------------
     private int generateId() {
@@ -119,9 +119,11 @@ public class InMemoryTasksManager implements TaskManager {
     public void deleteEpic(int id) {
         Epic epic = epics.get(id);
         if (epic != null) {
-            for (int subtaskId : epic.getSubtasksId()) {
-                deleteSubtask(subtaskId);//Удаляем подзадачу
+
+            while (epic.getSubtasksId().size() > 0) {
+                deleteSubtask(epic.getSubtasksId().get(0));//Удаляем подзадачу
             }
+
             historyManager.remove(id);//Удаляем из истории
             epics.remove(id);//Удаляем эпик
         } else System.out.println("Эпик не найден");

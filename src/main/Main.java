@@ -36,7 +36,7 @@ public class Main {
         Subtask subtask21=new Subtask(
                 "Подзадача 21", "Описание подзадачи 21", Instant.EPOCH,600, epic2.getId());
         Subtask subtask22=new Subtask(
-                "Подзадача 21", "Описание подзадачи 21", Instant.EPOCH,600, epic2.getId());
+                "Подзадача 22", "Описание подзадачи 22", Instant.EPOCH,600, epic2.getId());
 
         manager.addSubtask(subtask11);
         manager.addSubtask(subtask12);
@@ -45,11 +45,22 @@ public class Main {
         manager.addSubtask(subtask22);
 
         manager.getEpic(epic2.getId());
-        manager.getTask(task1.getId());
-        manager.getSubtask(subtask12.getId());
-        manager.getSubtask(subtask22.getId());
-        manager.getTask(task1.getId());
+        System.out.println(manager.getHistory());
 
+        manager.getTask(task1.getId());
+        System.out.println(manager.getHistory());
+
+        manager.getSubtask(subtask12.getId());
+        System.out.println(manager.getHistory());
+
+        manager.getSubtask(subtask22.getId());
+        System.out.println(manager.getHistory());
+
+        manager.getTask(task1.getId());
+        System.out.println(manager.getHistory());
+
+        manager.deleteEpic(epic2.getId());
+        System.out.println();
         System.out.println(manager.getHistory());
 
     }

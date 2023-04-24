@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c85efbfe-3e20-4d36-9188-a24987e207ce" name="Changes" comment="Добавлено удаление задачи из истории при удалении из менеджера.">
-      <change afterPath="$PROJECT_DIR$/src/main/managers/manager_history/Node/Node.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/managers/manager_history/InMemoryHistoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/managers/manager_history/InMemoryHistoryManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/managers/manager_tasks/InMemoryTasksManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/managers/manager_tasks/InMemoryTasksManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="33267" />
+    <option name="totalTimeSeconds" value="40394" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
@@ -49,8 +49,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "CustomLinkedList",
-    "last_opened_file_path": "D:/YandexDisk/Poligon/Java/KanBanV2/src/main",
+    "git-widget-placeholder": "subTaskID2LinkedList",
+    "last_opened_file_path": "D:/YandexDisk/Poligon/Java/emojicon",
     "settings.editor.selected.configurable": "editor.preferences.completion"
   }
 }]]></component>
@@ -130,5 +130,36 @@
     <MESSAGE value="В Main добавлен код для теста всех типов задач и истории.&#10;В InMemoryTasksManager historyManager создаётся от Managers" />
     <MESSAGE value="Добавлено удаление задачи из истории при удалении из менеджера." />
     <option name="LAST_COMMIT_MESSAGE" value="Добавлено удаление задачи из истории при удалении из менеджера." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/managers/manager_tasks/InMemoryTasksManager.java</url>
+          <line>135</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/managers/manager_tasks/InMemoryTasksManager.java</url>
+          <line>126</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/managers/manager_tasks/InMemoryTasksManager.java</url>
+          <line>123</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/Main.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="java.lang.Integer" memberName="value" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>
