@@ -4,19 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c85efbfe-3e20-4d36-9188-a24987e207ce" name="Changes" comment="Добавлено удаление задачи из истории при удалении из менеджера.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/managers/manager_history/InMemoryHistoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/managers/manager_history/InMemoryHistoryManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/managers/manager_tasks/InMemoryTasksManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/managers/manager_tasks/InMemoryTasksManager.java" afterDir="false" />
-    </list>
+    <list default="true" id="c85efbfe-3e20-4d36-9188-a24987e207ce" name="Changes" comment="Добавлено удаление задачи из истории при удалении из менеджера." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="40394" />
+    <option name="totalTimeSeconds" value="40546" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
@@ -49,7 +44,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "subTaskID2LinkedList",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "D:/YandexDisk/Poligon/Java/emojicon",
     "settings.editor.selected.configurable": "editor.preferences.completion"
   }
