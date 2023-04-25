@@ -24,20 +24,35 @@ public class InMemoryTasksManager implements TaskManager {
 
     @Override
     public Task getTask(int id) {
-        historyManager.add(tasks.get(id));
-        return tasks.get(id);
+        if (tasks.get(id) != null) {
+            historyManager.add(tasks.get(id));
+            return tasks.get(id);
+        } else {
+            System.out.println("Задачи с ID=" + id + " не существует");
+            return null;
+        }
     }
 
     @Override
     public Epic getEpic(int id) {
-        historyManager.add(epics.get(id));
-        return epics.get(id);
+        if (epics.get(id) != null) {
+            historyManager.add(epics.get(id));
+            return epics.get(id);
+        } else {
+            System.out.println("Эпика с ID=" + id + " не существует");
+            return null;
+        }
     }
 
     @Override
     public Subtask getSubtask(int id) {
-        historyManager.add(subtasks.get(id));
-        return subtasks.get(id);
+        if (subtasks.get(id) != null) {
+            historyManager.add(subtasks.get(id));
+            return subtasks.get(id);
+        } else {
+            System.out.println("Подзадачи с ID=" + id + " не существует");
+            return null;
+        }
     }
 
     @Override

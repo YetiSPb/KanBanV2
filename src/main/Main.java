@@ -20,8 +20,8 @@ public class Main {
         manager.addTask(task1);
         manager.addTask(task2);
 
-        Epic epic1= new Epic("Эпик 1", "Описаник эпака 1");
-        Epic epic2= new Epic("Эпик 2", "Описаник эпака 2");
+        Epic epic1= new Epic("Эпик 1", "Описание эпика 1");
+        Epic epic2= new Epic("Эпик 2", "Описание эпика 2");
 
         manager.addEpic(epic1);
         manager.addEpic(epic2);
@@ -59,9 +59,12 @@ public class Main {
         manager.getTask(task1.getId());
         System.out.println(manager.getHistory());
 
-        manager.deleteEpic(epic2.getId());
-        System.out.println();
+        manager.deleteSubtask(subtask22.getId());
         System.out.println(manager.getHistory());
+
+        manager.getSubtask(subtask12.getId());
+        System.out.println(manager.getHistory());
+
 
     }
 
