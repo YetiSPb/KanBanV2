@@ -18,7 +18,7 @@ import java.util.List;
 public class FileBackedTasksManager extends InMemoryTasksManager {
 
     private static final String TABLE_HEADER = "id,type,name,status,description,startTime,duration,endTime,epic";
-    private static final String FILE_FOR_DATA = "src/main/resources/file4save.csv";
+    private static final String FILE_FOR_DATA = "src/resources/file4save.csv";
     private static final String TAG_HISTORY = "<HISTORY>";
 
     private final Path pathForFileSave = Paths.get(FILE_FOR_DATA);

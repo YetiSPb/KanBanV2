@@ -68,7 +68,8 @@ public class Main {
         manager.getSubtask(subtask12.getId());
         System.out.println(manager.getHistory());
 
-        TaskManager taskManagerLoad = FileBackedTasksManager.loadFromFile(Paths.get("src/main/resources/file4save.csv").toFile());
+        TaskManager taskManagerLoad = FileBackedTasksManager.loadFromFile(Paths.get("src/resources/file4save.csv").toFile());
+
         taskManagerLoad.getTask(1);
         taskManagerLoad.getTask(1);
         System.out.println(taskManagerLoad);
