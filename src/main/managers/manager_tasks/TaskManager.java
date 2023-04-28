@@ -4,35 +4,36 @@ import main.tasks.Epic;
 import main.tasks.Subtask;
 import main.tasks.Task;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface TaskManager {
 
-    Task addTask(Task task);
+    Task addTask(Task task) throws IOException;
 
-    Epic addEpic(Epic epic);
+    Epic addEpic(Epic epic) throws IOException;
 
-    Subtask addSubtask(Subtask subtask);
+    Subtask addSubtask(Subtask subtask) throws IOException;
 
-    void deleteTask(int id);
+    void deleteTask(int id) throws IOException;
 
-    void deleteEpic(int id);
+    void deleteEpic(int id) throws IOException;
 
-    void deleteSubtask(int id);
+    void deleteSubtask(int id) throws IOException;
 
-    void deleteAllTasks();
+    void deleteAllTasks() throws IOException;
 
-    void deleteAllEpics();
+    void deleteAllEpics() throws IOException;
 
-    void deleteAllSubtasks();
+    void deleteAllSubtasks() throws IOException;
 
-    void deleteAllSubtasksByEpic(Epic epic);
+    void deleteAllSubtasksByEpic(Epic epic) throws IOException;
 
-    Task getTask(int id);
+    Task getTask(int id) throws IOException;
 
-    Epic getEpic(int id);
+    Epic getEpic(int id) throws IOException;
 
-    Subtask getSubtask(int id);
+    Subtask getSubtask(int id) throws IOException;
 
     List<Task> getAllTasks();
 
