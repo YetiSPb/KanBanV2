@@ -3,11 +3,9 @@ package main.tasks;
 import main.tasks.status.Status;
 import main.tasks.status.TaskType;
 
-import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 public class Epic extends Task {
@@ -48,7 +46,6 @@ public class Epic extends Task {
         this.endTime = endTime;
     }
 
-
     //------------------------------------------------------------------------------------------------------------------
 
     public void addSubtaskId(int id) {
@@ -59,47 +56,45 @@ public class Epic extends Task {
         subTasksId.removeIf(subtaskID -> subtaskID == id);
     }
 
-    public void updateEpicStatus(Map<Integer, Subtask> subtasks) {
+    /*
+   public void updateEpicStatus(Map<Integer, Subtask> subtasks) {
 
-        var startTime = subtasks.get(subTasksId.get(0)).getStartTime();
-        var endTime = subtasks.get(subTasksId.get(0)).getEndTime();
+        if (subTasksId.size() > 0) {
+            Instant startTime = subtasks.get(subTasksId.get(0)).getStartTime();
+            Instant endTime = subtasks.get(subTasksId.get(0)).getEndTime();
 
-        int isNew = 0;
-        int isDone = 0;
+            int isNew = 0;
+            int isDone = 0;
 
-        for (int id : getSubtasksId()) {
+            for (int id : getSubtasksId()) {
 
-            Task subtask = subtasks.get(id);
+                Task subtask = subtasks.get(id);
 
-            if (subtask.getStatus() == Status.NEW)
-                isNew += 1;
-
-            if (subtask.getStatus() == Status.DONE)
-                isDone += 1;
-
-            if (subtask.getStartTime().isBefore(startTime)) {
-                startTime = subtask.getStartTime();
+                if (subtask.getStatus() == Status.NEW)
+                    isNew += 1;
+                if (subtask.getStatus() == Status.DONE)
+                    isDone += 1;
+                if (subtask.getStartTime().isBefore(startTime)) {
+                    startTime = subtask.getStartTime();
+                }
+                if (subtask.getEndTime().isAfter(endTime)) {
+                    endTime = subtask.getEndTime();
+                }
             }
 
-            if (subtask.getEndTime().isAfter(endTime)) {
-                endTime = subtask.getEndTime();
+            this.setStartTime(startTime);
+            this.endTime = endTime;
+            this.setDurationSecond(Duration.between(startTime, endTime).toMinutes());
+
+            if (subtasks.size() == isNew - 1) {
+                setStatus(Status.NEW);
+            } else if (subtasks.size() == isDone - 1) {
+                setStatus(Status.DONE);
+            } else {
+                setStatus(Status.IN_PROGRESS);
             }
-
         }
-
-        this.setStartTime(startTime);
-        this.endTime = endTime;
-        this.setDurationSecond(Duration.between(startTime, endTime).toMinutes());
-
-        if (subtasks.size() == isNew - 1) {
-            setStatus(Status.NEW);
-        } else if (subtasks.size() == isDone - 1) {
-            setStatus(Status.DONE);
-        } else {
-            setStatus(Status.IN_PROGRESS);
-        }
-
-    }
+    }*/
 
     //------------------------------------------------------------------------------------------------------------------
 

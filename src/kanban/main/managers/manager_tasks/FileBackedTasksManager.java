@@ -156,21 +156,27 @@ public class FileBackedTasksManager extends InMemoryTasksManager {
 
 
     @Override
-    public void deleteTask(int id) {
-        super.deleteTask(id);
+    public boolean deleteTask(int id) {
+        boolean deleteTaskStatus;
+        deleteTaskStatus=super.deleteTask(id);
         save();
+        return deleteTaskStatus;
     }
 
     @Override
-    public void deleteEpic(int id) {
-        super.deleteEpic(id);
+    public boolean deleteEpic(int id) {
+        boolean deleteEpicStatus;
+        deleteEpicStatus=super.deleteEpic(id);
         save();
+        return deleteEpicStatus;
     }
 
     @Override
-    public void deleteSubtask(int id) {
-        super.deleteSubtask(id);
+    public boolean deleteSubtask(int id) {
+        boolean deleteSubtaskStatus;
+        deleteSubtaskStatus =super.deleteSubtask(id);
         save();
+        return deleteSubtaskStatus;
     }
 
     @Override
@@ -217,4 +223,5 @@ public class FileBackedTasksManager extends InMemoryTasksManager {
         save();
         return subtask;
     }
+
 }

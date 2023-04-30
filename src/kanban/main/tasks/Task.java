@@ -6,7 +6,7 @@ import main.tasks.status.TaskType;
 import java.time.Instant;
 import java.util.Objects;
 
-public class Task implements Comparable<Task> {
+public class Task  {
     private int id;
     private String name;
     private String description;
@@ -58,6 +58,7 @@ public class Task implements Comparable<Task> {
     }
 
     public Instant getEndTime() {
+
         return startTime.plusSeconds(durationSecond * SECONDS_IN_ONE_MINUTE);
     }
 
@@ -120,11 +121,6 @@ public class Task implements Comparable<Task> {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, description, status);
-    }
-
-    @Override
-    public int compareTo(Task o) {
-        return this.getStartTime().compareTo(o.getStartTime());
     }
 
 }
