@@ -19,9 +19,9 @@ public class Epic extends Task {
     }
 
     //Конструктор при загружаемом эпике
-    public Epic(int id, String name, String description, Instant startTime, long durationSecond, Status status) {
+    public Epic(int id, String name, String description, Status status) {
 
-        super(id, name, description, startTime, durationSecond, status);
+        super(id, name, description, Instant.ofEpochSecond(0), 0, status);
         this.endTime = super.getEndTime();
     }
 
@@ -54,6 +54,10 @@ public class Epic extends Task {
 
     public void deleteSubtaskId(int id) {
         subTasksId.removeIf(subtaskID -> subtaskID == id);
+    }
+
+    public void deleteAllSubtasks() {
+        subTasksId.clear();
     }
 
     /*

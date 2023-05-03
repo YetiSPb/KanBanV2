@@ -1,6 +1,6 @@
-package main.managers.manager_history;
+package main.managers.history;
 
-import main.managers.manager_history.Node.Node;
+import main.managers.history.Node.Node;
 import main.tasks.Task;
 
 import java.util.ArrayList;
@@ -45,10 +45,15 @@ public class InMemoryHistoryManager implements HistoryManager {
                 removeNode(historyView.get(task.getId()));
                 historyView.remove(task.getId());
             }
-            Node newNode = new Node(task, nodeList);
-            nodeLast.setNext(newNode);
-            newNode.setPrevious(nodeLast);
-            nodeLast = newNode;
+            if (historyView.size() == 0) {
+                nodeList = null;
+            } else {
+
+                Node newNode = new Node(task, nodeList);
+                nodeLast.setNext(newNode);
+                newNode.setPrevious(nodeLast);
+                nodeLast = newNode;
+            }
         }
         return nodeLast;
     }

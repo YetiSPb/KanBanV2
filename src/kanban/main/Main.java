@@ -1,8 +1,8 @@
 package main;
 
 import main.managers.Managers;
-import main.managers.manager_tasks.FileBackedTasksManager;
-import main.managers.manager_tasks.TaskManager;
+import main.managers.tasks.FileBackedTasksManager;
+import main.managers.tasks.TaskManager;
 import main.tasks.Epic;
 import main.tasks.Subtask;
 import main.tasks.Task;
@@ -63,7 +63,7 @@ public class Main {
         manager.addSubtask(subtask21);
         manager.addSubtask(subtask22);
 
-
+        manager.deleteAllEpics();
         System.out.println(manager.getPrioritizedTasks());
 
 

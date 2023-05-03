@@ -1,6 +1,6 @@
-package main.managers.manager_tasks;
+package main.managers.tasks;
 
-import main.managers.Exeption.ManagerSaveException;
+import main.managers.tasks.exeption.ManagerSaveException;
 import main.tasks.Epic;
 import main.tasks.Subtask;
 import main.tasks.Task;
@@ -53,13 +53,14 @@ public class FileBackedTasksManager extends InMemoryTasksManager {
             } else if (taskType == TaskType.SUBTASK) {
                 fileBackedTasksManager.loadSubtask(arrayListToSubtask(taskStr));
             }
-
         }
 
         if (stringsTasks.size() > startBlockHistory + 1) {
             List<String> idsHistory = new ArrayList<>(List.of(stringsTasks.get(startBlockHistory + 1).split(",")));
-            for (String id:idsHistory) {
+            for (String id : idsHistory) {
                 fileBackedTasksManager.getTask(Integer.parseInt(id));
+                fileBackedTasksManager.getEpic(Integer.parseInt(id));
+                fileBackedTasksManager.getSubtask(Integer.parseInt(id));
             }
         }
 
@@ -75,7 +76,6 @@ public class FileBackedTasksManager extends InMemoryTasksManager {
 
     private static Epic arrayListToEpic(List<String> epicString) {
         return new Epic(Integer.parseInt(epicString.get(0)), epicString.get(2), epicString.get(4),
-                Instant.parse(epicString.get(5)), Long.parseLong(epicString.get(6)),
                 Status.whatStatus(epicString.get(3)));
     }
 
@@ -124,12 +124,12 @@ public class FileBackedTasksManager extends InMemoryTasksManager {
         super.addTask(task);
     }
 
-    private void loadEpic(Task task) {
-        super.addTask(task);
+    private void loadEpic(Epic epic) {
+        super.addEpic(epic);
     }
 
-    private void loadSubtask(Task task) {
-        super.addTask(task);
+    private void loadSubtask(Subtask subtask) {
+        super.addSubtask(subtask);
     }
 
     @Override
@@ -158,7 +158,7 @@ public class FileBackedTasksManager extends InMemoryTasksManager {
     @Override
     public boolean deleteTask(int id) {
         boolean deleteTaskStatus;
-        deleteTaskStatus=super.deleteTask(id);
+        deleteTaskStatus = super.deleteTask(id);
         save();
         return deleteTaskStatus;
     }
@@ -166,7 +166,7 @@ public class FileBackedTasksManager extends InMemoryTasksManager {
     @Override
     public boolean deleteEpic(int id) {
         boolean deleteEpicStatus;
-        deleteEpicStatus=super.deleteEpic(id);
+        deleteEpicStatus = super.deleteEpic(id);
         save();
         return deleteEpicStatus;
     }
@@ -174,7 +174,7 @@ public class FileBackedTasksManager extends InMemoryTasksManager {
     @Override
     public boolean deleteSubtask(int id) {
         boolean deleteSubtaskStatus;
-        deleteSubtaskStatus =super.deleteSubtask(id);
+        deleteSubtaskStatus = super.deleteSubtask(id);
         save();
         return deleteSubtaskStatus;
     }

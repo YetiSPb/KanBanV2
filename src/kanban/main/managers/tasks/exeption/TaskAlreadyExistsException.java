@@ -1,4 +1,4 @@
-package main.managers.Exeption;
+package main.managers.tasks.exeption;
 
 public class TaskAlreadyExistsException extends RuntimeException {
 

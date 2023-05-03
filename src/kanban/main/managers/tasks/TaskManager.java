@@ -1,4 +1,4 @@
-package main.managers.manager_tasks;
+package main.managers.tasks;
 
 import main.tasks.Epic;
 import main.tasks.Subtask;
@@ -44,11 +44,11 @@ public interface TaskManager {
 
     List<Task> getHistory();
 
-    Task updateTask(Task task);
+    void updateTask(Task task);
 
-    Epic updateEpic(Epic epic);
+    void updateEpic(Epic epic);
 
-    Subtask updateSubtask(Subtask subtask);
+    void updateSubtask(Subtask subtask);
 
     List<Task> getPrioritizedTasks();
 
