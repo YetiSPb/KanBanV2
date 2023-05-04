@@ -19,13 +19,11 @@ public class Main {
 
         Task task1 = new Task("Задача 1", "Описание задачи 1",
                 Instant.EPOCH.plusSeconds(600 * 6 + 1), 600);
+        manager.addTask(task1);
 
         Task task2 = new Task("Задача 2", "Описание задачи 2",
                 Instant.EPOCH.plusSeconds(600 * 5 + 1), 600);
-
-        manager.addTask(task1);
         manager.addTask(task2);
-
 
         System.out.println(manager.getPrioritizedTasks());
 
@@ -44,23 +42,22 @@ public class Main {
 
         Subtask subtask11 = new Subtask("Подзадача 11", "Описание подзадачи 11",
                 Instant.EPOCH.plusSeconds(600 * 4 + 1), 600, epic1.getId());
+        manager.addSubtask(subtask11);
 
         Subtask subtask12 = new Subtask("Подзадача 12", "Описание подзадачи 12",
                 Instant.EPOCH.plusSeconds(600 * 2 + 1), 600, epic1.getId());
+        manager.addSubtask(subtask12);
 
         Subtask subtask13 = new Subtask("Подзадача 13", "Описание подзадачи 13",
                 Instant.EPOCH.plusSeconds(600 * 3 + 1), 600, epic1.getId());
+        manager.addSubtask(subtask13);
 
         Subtask subtask21 = new Subtask("Подзадача 21", "Описание подзадачи 21",
                 Instant.EPOCH.plusSeconds(600), 600, epic2.getId());
+        manager.addSubtask(subtask21);
 
         Subtask subtask22 = new Subtask("Подзадача 22", "Описание подзадачи 22",
                 Instant.EPOCH, 600, epic2.getId());
-
-        manager.addSubtask(subtask11);
-        manager.addSubtask(subtask12);
-        manager.addSubtask(subtask13);
-        manager.addSubtask(subtask21);
         manager.addSubtask(subtask22);
 
         manager.deleteAllEpics();
