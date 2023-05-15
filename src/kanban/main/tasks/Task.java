@@ -6,7 +6,7 @@ import main.tasks.status.TaskType;
 import java.time.Instant;
 import java.util.Objects;
 
-public class Task  {
+public class Task {
     private int id;
     private String name;
     private String description;
@@ -14,7 +14,7 @@ public class Task  {
     private long durationSecond;
     private Status status;
 
-    private final byte SECONDS_IN_ONE_MINUTE = 60;
+    transient byte SECONDS_IN_ONE_MINUTE = 60;
 
     //Конструктор при новой задаче
     public Task(String name, String description, Instant startTime, long durationSecond) {
@@ -58,7 +58,6 @@ public class Task  {
     }
 
     public Instant getEndTime() {
-
         return startTime.plusSeconds(durationSecond * SECONDS_IN_ONE_MINUTE);
     }
 

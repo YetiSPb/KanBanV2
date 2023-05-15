@@ -1,6 +1,6 @@
-package main.managers.tasks;
+package main.managers;
 
-import main.managers.tasks.exeption.ManagerSaveException;
+import main.managers.exeption.ManagerSaveException;
 import main.tasks.Epic;
 import main.tasks.Subtask;
 import main.tasks.Task;
@@ -15,7 +15,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileBackedTasksManager extends InMemoryTasksManager {
+public class FileBackedTasksManager extends InMemoryTaskManager {
 
     private static final String TABLE_HEADER = "id,type,name,status,description,startTime,duration,endTime,epic";
     private static final String FILE_FOR_DATA = "src/resources/file4save.csv";
@@ -23,7 +23,7 @@ public class FileBackedTasksManager extends InMemoryTasksManager {
 
     private final Path pathForFileSave = Paths.get(FILE_FOR_DATA);
 
-    public static FileBackedTasksManager loadFromFile(File file) {
+    public static FileBackedTasksManager load(File file) {
 
         FileBackedTasksManager fileBackedTasksManager = new FileBackedTasksManager();
 
@@ -58,9 +58,9 @@ public class FileBackedTasksManager extends InMemoryTasksManager {
         if (stringsTasks.size() > startBlockHistory + 1) {
             List<String> idsHistory = new ArrayList<>(List.of(stringsTasks.get(startBlockHistory + 1).split(",")));
             for (String id : idsHistory) {
-                fileBackedTasksManager.getTask(Integer.parseInt(id));
-                fileBackedTasksManager.getEpic(Integer.parseInt(id));
-                fileBackedTasksManager.getSubtask(Integer.parseInt(id));
+                fileBackedTasksManager.getTaskById(Integer.parseInt(id));
+                fileBackedTasksManager.getEpicById(Integer.parseInt(id));
+                fileBackedTasksManager.getSubtaskById(Integer.parseInt(id));
             }
         }
 
@@ -85,7 +85,7 @@ public class FileBackedTasksManager extends InMemoryTasksManager {
                 Status.whatStatus(subtaskString.get(3)), Integer.parseInt(subtaskString.get(8)));
     }
 
-    private void save() {
+    public void save() {
 
         try {
             if (Files.exists(pathForFileSave)) {
@@ -156,25 +156,25 @@ public class FileBackedTasksManager extends InMemoryTasksManager {
 
 
     @Override
-    public boolean deleteTask(int id) {
+    public boolean deleteTaskById(int id) {
         boolean deleteTaskStatus;
-        deleteTaskStatus = super.deleteTask(id);
+        deleteTaskStatus = super.deleteTaskById(id);
         save();
         return deleteTaskStatus;
     }
 
     @Override
-    public boolean deleteEpic(int id) {
+    public boolean deleteEpicById(int id) {
         boolean deleteEpicStatus;
-        deleteEpicStatus = super.deleteEpic(id);
+        deleteEpicStatus = super.deleteEpicById(id);
         save();
         return deleteEpicStatus;
     }
 
     @Override
-    public boolean deleteSubtask(int id) {
+    public boolean deleteSubtaskById(int id) {
         boolean deleteSubtaskStatus;
-        deleteSubtaskStatus = super.deleteSubtask(id);
+        deleteSubtaskStatus = super.deleteSubtaskById(id);
         save();
         return deleteSubtaskStatus;
     }
@@ -204,22 +204,22 @@ public class FileBackedTasksManager extends InMemoryTasksManager {
     }
 
     @Override
-    public Task getTask(int id) {
-        Task task = super.getTask(id);
+    public Task getTaskById(int id) {
+        Task task = super.getTaskById(id);
         save();
         return task;
     }
 
     @Override
-    public Epic getEpic(int id) {
-        Epic epic = super.getEpic(id);
+    public Epic getEpicById(int id) {
+        Epic epic = super.getEpicById(id);
         save();
         return epic;
     }
 
     @Override
-    public Subtask getSubtask(int id) {
-        Subtask subtask = super.getSubtask(id);
+    public Subtask getSubtaskById(int id) {
+        Subtask subtask = super.getSubtaskById(id);
         save();
         return subtask;
     }

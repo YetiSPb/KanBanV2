@@ -1,21 +1,22 @@
 package main;
 
 import main.managers.Managers;
-import main.managers.tasks.FileBackedTasksManager;
-import main.managers.tasks.TaskManager;
+import main.managers.TaskManager;
+import main.managers.http.server.HttpTasksServer;
 import main.tasks.Epic;
 import main.tasks.Subtask;
 import main.tasks.Task;
 
-import java.io.*;
-import java.nio.file.Paths;
+import java.io.IOException;
 import java.time.Instant;
 
-public class Main {
-
+class Main {
     public static void main(String[] args) throws IOException {
 
-        TaskManager manager = Managers.getDefaultFileBackedTasksManager();
+
+
+        TaskManager manager = Managers.getDefault();
+
 
         Task task1 = new Task("Задача 1", "Описание задачи 1",
                 Instant.EPOCH.plusSeconds(600 * 6 + 1), 600);
@@ -24,15 +25,6 @@ public class Main {
         Task task2 = new Task("Задача 2", "Описание задачи 2",
                 Instant.EPOCH.plusSeconds(600 * 5 + 1), 600);
         manager.addTask(task2);
-
-        System.out.println(manager.getPrioritizedTasks());
-
-        Task task3 = new Task(task1.getId(),"Задача 3", "Описание задачи 3",
-                Instant.EPOCH.plusSeconds(600 * 6 + 1), 600,task1.getStatus());
-
-        manager.updateTask(task3);
-        System.out.println(manager.getPrioritizedTasks());
-
 
         Epic epic1 = new Epic("Эпик 1", "Описание эпика 1");
         Epic epic2 = new Epic("Эпик 2", "Описание эпика 2");
@@ -60,47 +52,52 @@ public class Main {
                 Instant.EPOCH, 600, epic2.getId());
         manager.addSubtask(subtask22);
 
+
+        HttpTasksServer httpTaskServer = new HttpTasksServer(manager);
+        httpTaskServer.start();
+
+
+
         manager.deleteAllEpics();
         System.out.println(manager.getPrioritizedTasks());
 
 
-        manager.getEpic(epic2.getId());
+        manager.getEpicById(epic2.getId());
         System.out.println(manager.getHistory());
 
         System.out.println();
-        manager.getTask(task1.getId());
+        manager.getTaskById(task1.getId());
         System.out.println(manager.getHistory());
 
         System.out.println();
-        manager.getSubtask(subtask12.getId());
+        manager.getSubtaskById(subtask12.getId());
         System.out.println(manager.getHistory());
 
         System.out.println();
-        manager.getSubtask(subtask22.getId());
+        manager.getSubtaskById(subtask22.getId());
         System.out.println(manager.getHistory());
 
         System.out.println();
-        manager.getTask(task1.getId());
+        manager.getTaskById(task1.getId());
         System.out.println(manager.getHistory());
 
         System.out.println();
-        manager.deleteSubtask(subtask22.getId());
-        System.out.println(manager.getHistory());
-
-        System.out.println();
-        manager.getSubtask(subtask12.getId());
+        manager.getSubtaskById(subtask12.getId());
         System.out.println(manager.getHistory());
 
         System.out.println();
         System.out.println(manager.getPrioritizedTasks());
 
-        TaskManager taskManagerLoad = FileBackedTasksManager.loadFromFile(Paths.get("src/resources/file4save.csv").toFile());
+
+
+
+        /*TaskManager taskManagerLoad = FileBackedTasksManager.loadFromFile(Paths.get("src/resources/file4save.csv").toFile());
 
         taskManagerLoad.getTask(1);
         taskManagerLoad.getTask(1);
         System.out.println(taskManagerLoad);
         System.out.println();
-        System.out.println(taskManagerLoad.getHistory());
+        System.out.println(taskManagerLoad.getHistory());*/
     }
 
 }

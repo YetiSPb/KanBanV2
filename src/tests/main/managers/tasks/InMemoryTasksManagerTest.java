@@ -1,22 +1,12 @@
 package main.managers.tasks;
 
-import main.tasks.Epic;
-import main.tasks.Task;
-import main.tasks.status.Status;
+import main.managers.InMemoryTaskManager;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
-import java.time.Duration;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-class InMemoryTasksManagerTest extends TaskManagerTest<InMemoryTasksManager> {
+class InMemoryTasksManagerTest extends TaskManagerTest<InMemoryTaskManager> {
     @BeforeEach
     public void setUp() {
-        manager = new InMemoryTasksManager();
+        manager = new InMemoryTaskManager();
     }
 
 }

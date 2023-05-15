@@ -1,4 +1,4 @@
-package main.managers.tasks;
+package main.managers;
 
 import main.tasks.Epic;
 import main.tasks.Subtask;
@@ -14,11 +14,11 @@ public interface TaskManager {
 
     Subtask addSubtask(Subtask subtask);
 
-    boolean deleteTask(int id);
+    boolean deleteTaskById(int id);
 
-    boolean deleteEpic(int id);
+    boolean deleteEpicById(int id);
 
-    boolean deleteSubtask(int id);
+    boolean deleteSubtaskById(int id);
 
     void deleteAllTasks();
 
@@ -28,11 +28,11 @@ public interface TaskManager {
 
     void deleteAllSubtasksByEpic(Epic epic);
 
-    Task getTask(int id);
+    Task getTaskById(int id);
 
-    Epic getEpic(int id);
+    Epic getEpicById(int id);
 
-    Subtask getSubtask(int id);
+    Subtask getSubtaskById(int id);
 
     List<Task> getAllTasks();
 

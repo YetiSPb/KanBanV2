@@ -1,10 +1,9 @@
-package main.managers.tasks;
+package main.managers;
 
-import main.managers.tasks.exeption.TaskIsNull;
-import main.managers.tasks.exeption.TaskAlreadyExistsException;
-import main.managers.tasks.exeption.TaskIntersectsException;
-import main.managers.tasks.exeption.TaskNotFound;
-import main.managers.Managers;
+import main.managers.exeption.TaskIsNull;
+import main.managers.exeption.TaskAlreadyExistsException;
+import main.managers.exeption.TaskIntersectsException;
+import main.managers.exeption.TaskNotFound;
 import main.managers.history.HistoryManager;
 import main.tasks.Epic;
 import main.tasks.Subtask;
@@ -15,16 +14,16 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
 
-public class InMemoryTasksManager implements TaskManager {
+public class InMemoryTaskManager implements TaskManager {
     protected int id = 0;
 
-    private final Map<Integer, Task> tasks = new HashMap<>();
-    private final Map<Integer, Subtask> subtasks = new HashMap<>();
-    private final Map<Integer, Epic> epics = new HashMap<>();
+    protected final Map<Integer, Task> tasks = new HashMap<>();
+    protected final Map<Integer, Subtask> subtasks = new HashMap<>();
+    protected final Map<Integer, Epic> epics = new HashMap<>();
 
-    private final Set<Task> prioritizedTasks = new TreeSet<>(Comparator.comparing(Task::getStartTime));
+    protected final Set<Task> prioritizedTasks = new TreeSet<>(Comparator.comparing(Task::getStartTime));
 
-    private final HistoryManager historyManager = Managers.getDefaultHistory();
+    protected final HistoryManager historyManager = Managers.getDefaultHistory();
 
     //get---------------------------------------------------------------------------------------------------------------
     private int generateId() {
@@ -32,7 +31,7 @@ public class InMemoryTasksManager implements TaskManager {
     }
 
     @Override
-    public Task getTask(int id) {
+    public Task getTaskById(int id) {
         if (tasks.get(id) != null) {
             historyManager.add(tasks.get(id));
             return tasks.get(id);
@@ -43,7 +42,7 @@ public class InMemoryTasksManager implements TaskManager {
     }
 
     @Override
-    public Epic getEpic(int id) {
+    public Epic getEpicById(int id) {
         if (epics.get(id) != null) {
             historyManager.add(epics.get(id));
             return epics.get(id);
@@ -54,7 +53,7 @@ public class InMemoryTasksManager implements TaskManager {
     }
 
     @Override
-    public Subtask getSubtask(int id) {
+    public Subtask getSubtaskById(int id) {
         if (subtasks.get(id) != null) {
             historyManager.add(subtasks.get(id));
             return subtasks.get(id);
@@ -162,7 +161,7 @@ public class InMemoryTasksManager implements TaskManager {
 
     //delete------------------------------------------------------------------------------------------------------------
     @Override
-    public boolean deleteTask(int id) {
+    public boolean deleteTaskById(int id) {
         if (!tasks.containsKey(id)) throw new TaskNotFound("Задача не найдена.");
 
         try {
@@ -177,12 +176,12 @@ public class InMemoryTasksManager implements TaskManager {
     }
 
     @Override
-    public boolean deleteEpic(int id) {
+    public boolean deleteEpicById(int id) {
         Epic epic = epics.get(id);
         if (epic == null) throw new TaskNotFound("Эпик не найден");
 
         try {
-            epic.getSubtasksId().forEach(this::deleteSubtask);//Удаляем подзадачу
+            epic.getSubtasksId().forEach(this::deleteSubtaskById);//Удаляем подзадачу
             historyManager.remove(id);//Удаляем из истории
             epics.remove(id);//Удаляем эпик
             return true;
@@ -193,7 +192,7 @@ public class InMemoryTasksManager implements TaskManager {
     }
 
     @Override
-    public boolean deleteSubtask(int id) {
+    public boolean deleteSubtaskById(int id) {
         Subtask subtask = subtasks.get(id);
         if (subtask == null) throw new TaskNotFound("Подзадача не найдена");
 

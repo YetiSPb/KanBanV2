@@ -1,4 +1,4 @@
-package main.managers.tasks.exeption;
+package main.managers.exeption;
 
 public class TaskNotFound extends IndexOutOfBoundsException{
     public TaskNotFound(String message){
